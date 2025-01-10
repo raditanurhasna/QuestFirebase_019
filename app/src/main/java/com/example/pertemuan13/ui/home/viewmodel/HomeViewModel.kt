@@ -45,6 +45,17 @@ class HomeViewModel(
         }
     }
 
+    fun deleteMhs(mahasiswa: Mahasiswa){
+        viewModelScope.launch {
+            try {
+                repositoryMhs.deleteMhs(mahasiswa)
+
+            } catch (e: Exception){
+                mhsUIState = HomeUiState.Error(e)
+            }
+        }
+    }
+
 }
 
 sealed class HomeUiState {
@@ -53,3 +64,4 @@ sealed class HomeUiState {
     data class Succes(val data: List<Mahasiswa>) : HomeUiState()
     data class Error(val e: Throwable) : HomeUiState()
 }
+
