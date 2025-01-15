@@ -15,3 +15,4 @@ object DestinasiInsert : DestinasiNavigasi {
     override val titleRes: String = "Insert"
 
 }
+

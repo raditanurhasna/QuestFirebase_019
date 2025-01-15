@@ -8,6 +8,7 @@ import com.example.pertemuan13.MahasiswaApplications
 import com.example.pertemuan13.ui.home.viewmodel.HomeViewModel
 import com.example.pertemuan13.ui.home.viewmodel.InsertViewModel
 
+
 object PenyediaViewModel{
     val Factory = viewModelFactory {
         initializer {
@@ -20,7 +21,6 @@ object PenyediaViewModel{
                 mahasiswaApp().container.repositoryMhs
             )
         }
-
     }
 }
 fun CreationExtras.mahasiswaApp(): MahasiswaApplications =
