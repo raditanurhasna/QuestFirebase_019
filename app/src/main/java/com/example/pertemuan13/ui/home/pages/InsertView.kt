@@ -99,6 +99,10 @@ fun InsertMhsView (
                 .padding(padding)
                 .padding(16.dp)
         ) {
+            repeat(10) {
+                Text("Item $it", modifier = Modifier.padding(2.dp))
+            }
+
             InsertBodyMhs(
                 uiState = uiEvent,
                 homeUiState = uiState,
@@ -108,6 +112,8 @@ fun InsertMhsView (
                     if (viewModel.validateFields()) {
                         viewModel.insertMhs()
                     }
+
+
                 }
             )
         }
@@ -144,7 +150,7 @@ fun InsertBodyMhs(
                     color = Color.White,
                     modifier = Modifier
                         .size(20.dp)
-                        .padding(end = 8.dp)
+                        .padding(end = 5.dp)
                 )
                 Text("Loading...")
             } else {
@@ -268,6 +274,50 @@ fun FormMahasiswa (
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Text(text = errorState.angkatan ?: "", color = Color.Red)
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.dosenpembimbing1,
+            onValueChange = {
+                onValueChange(mahasiswaEvent.copy(dosenpembimbing1 = it))
+            },
+            label = { Text("Dosen Pembimmbing") },
+            isError = errorState.dosenpembimbing1 != null,
+            placeholder = { Text("Masukan Dosen Pembimbing 1") },
+        )
+        Text(
+            text = errorState.dosenpembimbing1 ?: "",
+            color = Color.Red
+        )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.dosenpembimbing2,
+            onValueChange = {
+                onValueChange(mahasiswaEvent.copy(dosenpembimbing2 = it))
+            },
+            label = { Text("Dosen Pembimmbing") },
+            isError = errorState.dosenpembimbing2 != null,
+            placeholder = { Text("Masukan Dosen Pembimbing 2") },
+        )
+        Text(
+            text = errorState.dosenpembimbing2 ?: "",
+            color = Color.Red
+        )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.judulskripsi,
+            onValueChange = {
+                onValueChange(mahasiswaEvent.copy(judulskripsi = it))
+            },
+            label = { Text("Judul Skripsi") },
+            isError = errorState.judulskripsi != null,
+            placeholder = { Text("Masukan Judul Skripsi") },
+        )
+        Text(
+            text = errorState.judulskripsi ?: "",
+            color = Color.Red
+        )
+
 
 
     }
